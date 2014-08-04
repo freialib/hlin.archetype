@@ -35,28 +35,24 @@ class FilesystemMockTests {
 					// directories are just string keys, if you specify a path it will
 					// get expanded and merged correctly; error in case the definition
 					// require overwrites
-					'example/path/to' => array
-						(
-							// files are just array entries with an integer key
-							$file1, $file2, $file3,
-							'another_dir' => array
-								(
-									$file1, $file2, $file3, $file4
-								)
-						),
-					'example/path' => array
-						(
-							'to' => [ $file4, $file5 ],
-							'secured' => array
-								(
-									// dir's can have mode, user, timestamp and group
-									'%mode' => 0700,
-									'%user' => 'root',
-									'%group' => 'www-data',
-									'%time' => 0,
-									$file1, $file2
-								)
-						)
+					'example/path/to' => [
+						// files are just array entries with an integer key
+						$file1, $file2, $file3,
+						'another_dir' => [
+							$file1, $file2, $file3, $file4
+						]
+					],
+					'example/path' => [
+						'to' => [ $file4, $file5 ],
+						'secured' => [
+							// dir's can have mode, user, timestamp and group
+							'%mode' => 0700,
+							'%user' => 'root',
+							'%group' => 'www-data',
+							'%time' => 0,
+							$file1, $file2
+						]
+					]
 				],
 				'/home/appuser/appfiles' # where above structure is attached
 			);

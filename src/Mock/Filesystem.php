@@ -14,16 +14,14 @@ class FilesystemMock implements \hlin\archetype\Filesystem {
 	public $mock_homedir = null;
 	public $mock_pwd     = null;
 
-	public $mock_filesystem = array
-		(
-			'localdomain' => array
-				(
-					'home' => [],
-					'temp' => [],
-					'var' => ['www' => []],
-					'dev' => ['null' => null]
-				)
-		);
+	public $mock_filesystem = [
+		'localdomain' => [
+			'home' => [],
+			'temp' => [],
+			'var' => ['www' => []],
+			'dev' => ['null' => null]
+		]
+	];
 
 	/**
 	 * ...
@@ -204,17 +202,15 @@ class FilesystemMock implements \hlin\archetype\Filesystem {
 	 * @return array
 	 */
 	function mock_file($filename, $contents = '', $mode = 0777, $user = null, $group = null, $type = 'file', $time = 0) {
-		return array
-			(
-				'filename' => $filename,
-				'contents' => $contents,
-				'%type' => $type,
-				'%time' => $time,
-				'%mode' => $mode,
-				'%user' => $user == null ? $this->mock_user : $user,
-				'%group' => $group == null ? $this->mock_group : $group,
-
-			);
+		return [
+			'filename' => $filename,
+			'contents' => $contents,
+			'%type' => $type,
+			'%time' => $time,
+			'%mode' => $mode,
+			'%user' => $user == null ? $this->mock_user : $user,
+			'%group' => $group == null ? $this->mock_group : $group,
+		];
 	}
 
 	/**
@@ -296,15 +292,14 @@ class FilesystemMock implements \hlin\archetype\Filesystem {
 			$file = array_shift($parts);
 			// is this a directory?
 			if (isset($cwd[$file])) {
-				return array
-					(
-						'contents' => & $cwd[$file],
-						'filename' => $file,
-						'type' => 'dir',
-						'mode' => isset($cwd[$file]['%mode']) ? $cwd[$file]['%mode'] : 0777,
-						'user' => isset($cwd[$file]['%user']) ? $cwd[$file]['%user'] : $this->mock_user,
-						'group' => isset($cwd[$file]['%group']) ? $cwd[$file]['%group'] : $this->mock_group,
-					);
+				return [
+					'contents' => & $cwd[$file],
+					'filename' => $file,
+					'type' => 'dir',
+					'mode' => isset($cwd[$file]['%mode']) ? $cwd[$file]['%mode'] : 0777,
+					'user' => isset($cwd[$file]['%user']) ? $cwd[$file]['%user'] : $this->mock_user,
+					'group' => isset($cwd[$file]['%group']) ? $cwd[$file]['%group'] : $this->mock_group,
+				];
 			}
 			else { // has to be file
 				foreach ($cwd as $n => $f) {
