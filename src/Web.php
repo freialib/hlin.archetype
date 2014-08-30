@@ -35,6 +35,11 @@ interface Web {
 	function requestQueryData();
 
 	/**
+	* @return array
+	*/
+	function requestFiles();
+
+	/**
 	 * @see http://www.php.net//manual/en/function.header.php
 	 */
 	function header($header, $replace = true, $http_response_code = null);
