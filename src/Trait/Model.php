@@ -11,7 +11,7 @@ trait ModelTrait {
 	 * @return array
 	 */
 	function toArray() {
-		return $this->attrs;
+		return $this->data;
 	}
 
 } # trait
