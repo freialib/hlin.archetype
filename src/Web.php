@@ -35,6 +35,11 @@ interface Web {
 	function requestQueryData();
 
 	/**
+	 * @return string
+	 */
+	function requestRawQueryData();
+
+	/**
 	* @return array
 	*/
 	function requestFiles();
@@ -48,6 +53,11 @@ interface Web {
 	 * Sent content to the client.
 	 */
 	function send($contents, $status = 200, array $headers = null);
+
+	/**
+	 * ...
+	 */
+	function printf($format);
 
 	/**
 	 * @see http://www.php.net/manual/en/function.http-response-code.php
